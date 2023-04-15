@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  frontend-service:
+    build:
+      context: ./apps/frontend-service
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./apps/frontend-service/views:/usr/share/nginx/html
+      - ./apps/frontend-service/js:/usr/share/nginx/js
+      - ./apps/frontend-service/css:/usr/share/nginx/css
+      - ./apps/frontend-service/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - backend-service
+
+  backend-service:
+    build:
+      context: ./apps/backend-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=ecommerce_db
+      - SECRET=secret
+    volumes:
+      - ./apps/backend-service:/app
+    command: [ 'npm', 'run', 'start:dev' ]
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3311:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ecommerce_db
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  db-data:

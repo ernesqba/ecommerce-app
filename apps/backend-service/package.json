@@ -1,0 +1,54 @@
+{
+  "name": "backend-service",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "build": "tsc -p .",
+    "build:start": "tsc -p . && node dist/scr/main.js",
+    "start": "node dist/src/main.js",
+    "start:dev": "nodemon src/main.ts tsoa spec",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint:check": "tsc --noEmit && eslint .",
+    "lint:format": "tsc --noEmit && eslint --fix ."
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "^4.18.1",
+    "jsonwebtoken": "9.0.0",
+    "mysql2": "^3.1.2",
+    "winston": "3.8.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "13.2.1",
+    "@commitlint/config-conventional": "13.2.0",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "9.0.1",
+    "@types/node": "^18.0.3",
+    "@typescript-eslint/eslint-plugin": "5.30.6",
+    "concurrently": "7.2.2",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-prettier-standard": "3.0.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "lint-staged": "^11.2.3",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.2.1",
+    "prettier-config-standard": "^1.0.1",
+    "source-map-support": "^0.5.20",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.4.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint:check"
+    ]
+  }
+}

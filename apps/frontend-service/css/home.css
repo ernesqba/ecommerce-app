@@ -1,0 +1,43 @@
+.category-card {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-card-selected {
+  background-color: rgba(162, 152, 152, 0.672);
+}
+
+.product-image:hover {
+  transform: scale(2.0);
+  transition: transform 0.3s;
+  z-index: 1;
+}
+
+.same-size-image {
+  width: 100%; /* Adjust this value according to your desired width */
+  height: 200px; /* Adjust this value according to your desired height */
+  object-fit: scale-down; /* This property will ensure the image maintains its aspect ratio and doesn't get stretched */
+}
+
+.out-of-stock {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  opacity: 0.7;
+}
+
+.out-of-stock .card-title,
+.out-of-stock .card-text,
+.out-of-stock .btn {
+  color: #721c24;
+}
+
+.out-of-stock .btn {
+  border-color: #721c24;
+  background-color: #f5c6cb;
+}
