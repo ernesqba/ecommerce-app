@@ -26,7 +26,7 @@ git clone https://github.com/ernesqba/ecommerce-app.git
 
 2. Change to the project directory:
 
-cd my-ecommerce-application
+cd ecommerce-app
 
 
 3. Start the application using Docker Compose:
